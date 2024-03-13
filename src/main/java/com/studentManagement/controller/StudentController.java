@@ -29,7 +29,7 @@ public class StudentController {
     public ModelAndView getAllStudents()
     {
         List<Student> list =sService.getAllStudents();
-        return new ModelAndView("all_Students","student",list);
+        return new ModelAndView("all_students","student",list);
     }
 
     @GetMapping("/delete_student")
@@ -50,14 +50,14 @@ public class StudentController {
     public String addStudent(@ModelAttribute Student s)
     {
         sService.save(s);
-        return "all_students";
+        return "redirect:/all_students";
     }
 
     @RequestMapping("/deleteStudent/{id}")
     public String deleteStudent(@PathVariable("id") int id)
     {
         sService.deleteById(id);
-        return "all_students";
+        return "redirect:/delete_student";
     }
 
     @RequestMapping("/editStudent/{id}")
