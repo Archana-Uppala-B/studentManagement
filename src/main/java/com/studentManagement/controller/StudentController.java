@@ -46,19 +46,18 @@ public class StudentController {
         return new ModelAndView("update_student","students",list);
     }
 
-    //to handle the post method from form
     @PostMapping("/save")
     public String addStudent(@ModelAttribute Student s)
     {
         sService.save(s);
-        return "redirect:/all_students";
+        return "all_students";
     }
 
     @RequestMapping("/deleteStudent/{id}")
     public String deleteStudent(@PathVariable("id") int id)
     {
         sService.deleteById(id);
-        return "redirect:/all_students";
+        return "all_students";
     }
 
     @RequestMapping("/editStudent/{id}")
@@ -101,6 +100,4 @@ public class StudentController {
         }
         return "search_student";
     }
-
-
 }
